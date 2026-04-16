@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  /* FONTES */
+  --font-sans: "Open Sans", system-ui, sans-serif;
+  --font-heading: "Montserrat", sans-serif;
+
+  /* CORES PRINCIPAIS */
+  --color-primary-dark: #050F17;
+  --color-purple: #7954ED;
+  --color-blue: #46AAE4;
+  --color-blue-light: #81CAE7;
+
+  /* NEUTROS */
+  --color-gray-light: #F3F3F3;
+  --color-white-soft: #FCFCFC;
+
+  /* VARIACOES */
+    --color-purple-hover: #6845d1;
+  --color-purple-muted: #a99cf5;
+
+  --color-background: #FCFCFC;
+  --color-card: #F3F3F3;
+  --color-text: #050F17;
+}
