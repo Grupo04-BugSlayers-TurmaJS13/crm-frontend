@@ -11,11 +11,12 @@ import { motion } from "framer-motion";
 import { ClipLoader } from "react-spinners";
 import { FaCheck, FaExclamationTriangle } from "react-icons/fa";
 import logo from "../../assets/logo-crm.png";
-import { cadastrarUsuario } from "../../services/Service";
+
 import { MdOutlineAppRegistration, MdOutlineSecurity } from "react-icons/md";
 import { TbClick } from "react-icons/tb";
 import { InstagramLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import { FacebookLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
+import { cadastrarUsuario } from "../../services/Service";
 
 function Cadastro() {
     const navigate = useNavigate();

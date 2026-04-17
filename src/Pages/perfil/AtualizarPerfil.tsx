@@ -11,7 +11,7 @@ import { FaCheck, FaPencil } from "react-icons/fa6"
 import { FaExclamationTriangle } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { ClipLoader } from "react-spinners"
-import { atualizar, buscar } from "../../services/service"
+import { atualizar, buscar } from "../../services/Service"
 
 function AtualizarPerfil() {
 
