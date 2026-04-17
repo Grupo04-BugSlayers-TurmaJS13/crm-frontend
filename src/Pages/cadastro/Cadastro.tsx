@@ -164,6 +164,7 @@ function Cadastro() {
 
                                 {usuario.nome.length > 0 && usuario.nome?.length < 3 && (
                                     <span className="text-red-400 text-xs flex items-center p-2 gap-2">
+                                        <FaExclamationTriangle size={16} />
                                         O nome deve ter no mínimo 3 caracteres
                                     </span>
                                 )}
