@@ -24,7 +24,7 @@ function Login() {
 
   useEffect(() => {
     if (usuario.token !== "") {
-      navigate("/listarOportunidades");
+      navigate("listarclientes");
     }
   }, [usuario]);
 

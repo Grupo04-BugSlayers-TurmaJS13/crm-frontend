@@ -1,20 +1,20 @@
 import { useNavigate } from "react-router-dom";
 
-import CardOportunidade from "../cardoportunidade/CardOportunidade";
+import CardCliente from "../cardcliente/CardCliente";
 import { useContext, useEffect, useState } from "react";
-import type Oportunidade from "../../../models/Oportunidade";
+import type Cliente from "../../../models/Cliente";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import { buscar } from "../../../services/service";
-import FormOportunidade from "../formoportunidade/FormOportunidade";
 import { SyncLoader } from "react-spinners";
 
-function ListarOportunidade() {
+
+function ListarClientes() {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
+  const [clientes, setClientes] = useState<Cliente[]>([]);
 
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
@@ -27,14 +27,14 @@ function ListarOportunidade() {
   }, [token]);
 
   useEffect(() => {
-    buscarOportunidades();
-  }, [oportunidades.length]);
+    buscarClientes();
+  }, [clientes.length]);
 
-  async function buscarOportunidades() {
+  async function buscarClientes() {
     try {
       setIsLoading(true);
 
-      await buscar("/oportunidades", setOportunidades, {
+      await buscar("/clientes", setClientes, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
@@ -52,28 +52,34 @@ function ListarOportunidade() {
           <SyncLoader color="#312e81" size={32} />
         </div>
       )}
-      <section className=" min-h-[80vh]  w-full bg-background my-8 pt-5">
+      <section className=" min-h-[80vh]  w-full bg-primary-dark my-8 pt-5">
         <div className="flex justify-center ">
-          <h1 className="font-heading text-2xl text-center">
+          <h1 className="font-heading text-4xl text-center text-blue-light">
             {" "}
-            PLATAFORMA DE CRM QUE SIMPLIFICA E AGILIZA <br /> AS VENDAS DO SEU
-            NEGÓCIO!
+            Clientes
           </h1>
         </div>
         <article className=" flex p-4 w-screen justify-center">
           <div className="grid lg:grid-cols-3 gap-x-20 md:grid-cols-2 sm:grid-cols-1 ">
-            {oportunidades.map((oportunidade) => (
-              <CardOportunidade
-                key={oportunidade.id}
-                oportunidade={oportunidade}
+            {clientes.map((cliente) => (
+              <CardCliente
+                key={cliente.id}
+                cliente={cliente}
               />
             ))}
           </div>
+          
         </article>
+        <div className="flex justify-center my-8 ">
+          <button onClick={() => navigate("/cadastrarcliente")}
+            className="bg-purple-500 rounded-lg text-white px-6 py-3 font-bold text-2xl hover:bg-purple transition-all">
+            Cadastrar Cliente
+          </button>
+        </div>
       </section>
-      <FormOportunidade />
+    
     </>
   );
 }
 
-export default ListarOportunidade;
+export default ListarClientes;
