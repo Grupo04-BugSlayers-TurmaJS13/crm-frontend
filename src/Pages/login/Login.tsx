@@ -3,7 +3,7 @@ import {
   useEffect,
   useState,
   type ChangeEvent,
-  type SyntheticEvent,
+  type SyntheticEvent
 } from "react"
 import { FaExclamationTriangle } from "react-icons/fa"
 import { motion } from "framer-motion"
@@ -20,9 +20,11 @@ import { TbNotes } from "react-icons/tb"
 function Login() {
   const navigate = useNavigate();
 
+
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
     {} as UsuarioLogin,
   );
+
 
   const { usuario, handleLogin, isLoading } = useContext(AuthContext);
 
@@ -34,6 +36,7 @@ function Login() {
       navigate("/home");
     }
   }, [usuario]);
+
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setUsuarioLogin({
@@ -174,8 +177,10 @@ function Login() {
           </div>
         </article>
       </section>
+
     </>
   );
 }
 
 export default Login
+
