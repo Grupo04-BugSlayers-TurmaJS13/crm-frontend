@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { motion, type Variants } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
 
+
 export const fadeUp: Variants ={
     hidden:{ opacity: 0, y:28},
     visible:(delay: number = 0)=> ({
