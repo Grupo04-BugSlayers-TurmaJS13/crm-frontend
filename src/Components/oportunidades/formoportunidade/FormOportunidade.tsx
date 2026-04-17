@@ -11,9 +11,10 @@ import { ClipLoader } from "react-spinners";
 import { AuthContext } from "../../../contexts/AuthContext";
 import type Cliente from "../../../models/Cliente";
 import type Oportunidade from "../../../models/Oportunidade";
-import { atualizar, buscar, cadastrar } from "../../../services/Service";
+
 import { StatusControle } from "../../../utils/StatusControle";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { buscar, atualizar, cadastrar } from "../../../services/service";
 
 function FormOportunidade() {
 	const navigate = useNavigate();
@@ -296,5 +297,4 @@ function FormOportunidade() {
 }
 
 export default FormOportunidade;
-
 
