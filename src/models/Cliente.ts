@@ -1,11 +1,10 @@
-import { Oportunidade } from "./Oportunidade";
+import type Oportunidade from "./Oportunidade";
 
-export interface Cliente {
+export default interface Cliente {
   id: number;
   nome: string;
   email: string;
   telefone: string;
-  sites: string;
-  oportunidades?: Oportunidade[];
-  status: 'Ativo' | 'Inativo';
+  sites?: string;
+  oportuniades?: Oportunidade[];
 }

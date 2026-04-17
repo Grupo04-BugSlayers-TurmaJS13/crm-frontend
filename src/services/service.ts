@@ -1,25 +1,42 @@
 import axios from "axios";
 
-export const api = axios.create({
-  baseURL: "https://crm-backend-dzhc.onrender.com",
-});
+// Cria uma nova instância do Axios
+const api = axios.create({
+        baseURL: "https://crm-backend-dzhc.onrender.com"
+    })
 
-export const cadastrarUsuario = async (url: string, dados: any, setDados: any) => {
-  const resposta = await api.post(url, dados);
-  setDados(resposta.data);
-};
+// Função para cadastrar Usuário
+export const cadastrarUsuario = async (url: string, dados: Object, setDados: Function) => {
+    const resposta = await api.post(url, dados);
+    setDados(resposta.data);
+}
+// Função para Autenticar usuário
+export const login = async (url: string, dados: Object, setDados: Function) => {
+    const resposta = await api.post(url, dados);
+    setDados(resposta.data);
+}
 
-export const login = async (url: string, dados: any, setDados: any) => {
-  const resposta = await api.post(url, dados);
-  setDados(resposta.data);
-};
+// Função para Consultar com token
+export const buscar = async (url:string, setDados: Function, header: Object) => {
+    const resposta = await api.get(url, header)
+    setDados(resposta.data);
+    
+}
 
-export const buscar = async (url: string, setDados: any, header: any) => {
-  const resposta = await api.get(url, header);
-  setDados(resposta.data);
-};
+// Função para Cadastrar com token
+export const cadastrar = async (url:string, dados: Object, setDados: Function, header: Object) => {
+    const resposta = await api.post(url, dados, header)
+    setDados(resposta.data);
+}
 
-export const cadastrar = async (url: string, dados: any, setDados: any, header: any) => {
-  const resposta = await api.post(url, dados, header);
-  setDados(resposta.data);
-};
+// Função para Atualizar com token
+export const atualizar = async (url:string, dados: Object, setDados: Function, header: Object) => {
+    const resposta = await api.put(url, dados, header)
+    setDados(resposta.data);
+}
+
+// Função para Deletar com token
+export const deletar = async (url:string,  header: Object) => {
+await api.delete(url, header)
+    
+}
