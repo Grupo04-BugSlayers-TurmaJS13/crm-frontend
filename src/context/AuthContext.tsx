@@ -1,9 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { createContext, useState, type ReactNode } from "react";
-import type UsuarioLogin from "../models/UsuarioLogin";
-import { login } from "../services/service";
-import { ToastAlerta } from "../utils/ToastAlerta";
+
+import { createContext, useState, type ReactNode } from "react"
+import type UsuarioLogin from "../models/UsuarioLogin"
+import { login } from "../services/Service"
+import { ToastAlerta } from "../utils/ToastAlerta"
+
 
 
 interface AuthContextProps {

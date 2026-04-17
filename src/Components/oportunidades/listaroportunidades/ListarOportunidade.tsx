@@ -5,9 +5,10 @@ import { useContext, useEffect, useState } from "react";
 import type Oportunidade from "../../../models/Oportunidade";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
-import { buscar } from "../../../services/Service";
+
 import FormOportunidade from "../formoportunidade/FormOportunidade";
 import { SyncLoader } from "react-spinners";
+import { buscar } from "../../../services/Service";
 
 function ListarOportunidade() {
   const navigate = useNavigate();

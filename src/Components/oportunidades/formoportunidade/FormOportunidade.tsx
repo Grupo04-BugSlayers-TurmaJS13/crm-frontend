@@ -7,13 +7,12 @@ import {
 } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-
 import { AuthContext } from "../../../contexts/AuthContext";
 import type Cliente from "../../../models/Cliente";
 import type Oportunidade from "../../../models/Oportunidade";
-import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { StatusControle } from "../../../utils/StatusControle";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { atualizar, buscar, cadastrar } from "../../../services/Service";
 
 function FormOportunidade() {
 	const navigate = useNavigate();
