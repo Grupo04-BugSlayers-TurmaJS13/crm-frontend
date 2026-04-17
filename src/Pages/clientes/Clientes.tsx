@@ -1,9 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import type { Cliente } from "../../models/Cliente";
 import { buscar } from "../../services/Service";
 import { Plus, Buildings } from "@phosphor-icons/react";
 import { AuthContext } from "../../context/AuthContext";
+import { ToastAlerta } from "../../utils/ToastAlerta";
+import type Cliente from "../../models/Cliente";
 
 function Clientes() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function Clientes() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
+      ToastAlerta("Você precisa estar logado", "erro");
       navigate("/login");
     }
   }, [token]);
@@ -26,9 +27,9 @@ function Clientes() {
       });
     } catch (error: any) {
       if (error.toString().includes('401')) {
-         handleLogout();
+        handleLogout();
       }
-      alert("Erro ao carregar clientes. Verifique sua conexão.");
+      ToastAlerta("Erro ao carregar clientes. Verifique sua conexão.", "info");
     }
   }
 

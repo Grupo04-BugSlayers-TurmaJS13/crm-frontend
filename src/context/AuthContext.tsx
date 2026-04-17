@@ -35,8 +35,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setIsLoading(true)
 
         try {
-            await login('usuarios/logar', usuario, setUsuario)
-            ToastAlerta('Usuário logado com sucesso', 'sucesso')
+            await login('/usuarios/logar', usuario, setUsuario)
+            ToastAlerta('Usuário logado com sucesso!', 'sucesso')
         } catch (error) {
             ToastAlerta('Usuário ou senha inválidos', 'erro')
         } 
@@ -59,5 +59,4 @@ export function AuthProvider({ children }: AuthProviderProps) {
             {children}
         </AuthContext.Provider>
     )
-
 }

@@ -1,9 +1,11 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, type ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { Cliente } from "../../models/Cliente";
 import { buscar, cadastrar, atualizar } from "../../services/Service";
-import { Save, User, Envelope, Phone, Globe, ArrowLeft } from "@phosphor-icons/react";
+import { User, Envelope, Phone, Globe, ArrowLeft } from "@phosphor-icons/react";
+import { ToastAlerta } from "../../utils/ToastAlerta";
+import type Cliente from "../../models/Cliente";
+import { FaSave } from "react-icons/fa";
 
 function FormCliente() {
     const navigate = useNavigate();
@@ -22,7 +24,7 @@ function FormCliente() {
     // proteção de rota: Se não tiver token, volta pro login
     useEffect(() => {
         if (token === "") {
-            alert("Você precisa estar logado");
+            ToastAlerta("Você precisa estar logado", "erro");
             navigate("/login");
         }
     }, [token]);
@@ -57,19 +59,19 @@ function FormCliente() {
                 await atualizar(`/clientes`, cliente, setCliente, {
                     headers: { Authorization: token },
                 });
-                alert("Cliente atualizado com sucesso!");
+                ToastAlerta("Cliente atualizado com sucesso!", "sucesso");
             } else {
                 await cadastrar(`/clientes`, cliente, setCliente, {
                     headers: { Authorization: token },
                 });
-                alert("Cliente cadastrado com sucesso!");
+                ToastAlerta("Cliente cadastrado com sucesso!", "sucesso");
             }
             navigate("/clientes");
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout();
             } else {
-                alert("Erro ao salvar o Cliente.");
+                ToastAlerta("Erro ao salvar o Cliente.", "erro");
             }
         }
     }
@@ -157,7 +159,7 @@ function FormCliente() {
                         type="submit"
                         className="w-full bg-purple hover:bg-purple-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all transform active:scale-95 shadow-lg shadow-purple/20"
                     >
-                        <Save size={22} weight="bold" />
+                        <FaSave size={22} height="bold" />
                         {id !== undefined ? 'Confirmar Edição' : 'Finalizar Cadastro'}
                     </button>
                 </form>

@@ -18,7 +18,7 @@ function Perfil() {
 
     const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
 
-    const minhasOportunidades= oportunidades.filter(
+    const minhasOportunidades = oportunidades.filter(
         (post) => post.usuario?.id === usuario.id
     )
 
@@ -92,29 +92,29 @@ function Perfil() {
                                 Segurança
                             </h2>
                             <p className="p.075">Senha protegida 🔒</p>
-                            <Link to="/atualizarusuario"className="mt-3 text-sm text-purple-400 hover:underline">
+                            <Link to="/atualizarusuario" className="mt-3 text-sm text-purple-400 hover:underline">
                                 Alterar senha
                             </Link>
-                        <div className="flex flex-col justify-between mt-10">
 
-                    <h3 className="text-2xl font-bold text-purple-400 mb-6 text-center">
-                        Minhas Oportunidades
-                    </h3>
-
-                    {minhasOportunidades.length === 0 ? (
-                        <p className="text-center text-gray-400">
-                            Você ainda não fez nenhuma postagem 😢
-                        </p>
-                    ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 ">
-                            {minhasOportunidades.map((oportunidade) => (
-                                <CardOportunidade key={oportunidade.id} oportunidade={oportunidade} />
-                            ))}
                         </div>
-                    )}
-                </div>
-                </div>
+                        <div className="flex flex-col justify-between mt-10 text-center items-center justify-center">
 
+                            <h3 className="text-2xl font-bold text-purple-400 mb-6 text-center">
+                                Minhas Oportunidades
+                            </h3>
+
+                            {minhasOportunidades.length === 0 ? (
+                                <p className="text-center items-center justify-center text-gray-400">
+                                    Você ainda não tem nenhuma Oportunidade
+                                </p>
+                            ) : (
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 ">
+                                    {minhasOportunidades.map((oportunidade) => (
+                                        <CardOportunidade key={oportunidade.id} oportunidade={oportunidade} />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -122,4 +122,4 @@ function Perfil() {
     )
 }
 
-export default Perfil;
+export default Perfil

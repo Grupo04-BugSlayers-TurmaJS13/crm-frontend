@@ -29,11 +29,11 @@ function Login() {
   const { usuario, handleLogin, isLoading } = useContext(AuthContext);
 
   const emailValido =
-    usuarioLogin.usuario?.includes("@") && usuarioLogin.usuario?.includes(".");
+    usuarioLogin.usuario?.includes("@") && usuarioLogin.usuario?.includes(".")
 
   useEffect(() => {
     if (usuario.token !== "") {
-      navigate("/home");
+      navigate("/perfil")
     }
   }, [usuario]);
 
@@ -49,6 +49,9 @@ function Login() {
     e.preventDefault();
     handleLogin(usuarioLogin);
   }
+
+  console.log("USUARIO AUTH:", usuario);
+console.log("TOKEN:", usuario.token);
 
   return (
     <>

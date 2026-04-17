@@ -90,9 +90,9 @@ function AtualizarPerfil() {
         e.preventDefault()
         setIsLoading(true)
 
-        if (confirmarSenha === user.senha && user.senha.length >= 8) {
+        if (confirmarSenha === usuario.senha && usuario.senha.length >= 8) {
             try {
-                await atualizar(`/usuarios/${id}`, user, setUser, {
+                await atualizar(`/usuarios`, user, setUser, {
                     headers: {
                         Authorization: token,
                     },
@@ -168,13 +168,13 @@ console.log("TOKEN:", usuario.token);
                         <input
                             type="text"
                             name="nome"
-                            value={user.nome}
+                            value={usuario.nome}
                             onChange={atualizarEstado}
                             className="w-full p-3 rounded-xl bg-[#0f0f1a] border border-gray-800 text-white
             focus:border-purple-500 focus:ring-2 focus:ring-purple-500/30 transition"
                         />
 
-                        {usuario.nome.length > 0 && usuario.nome?.length < 3 && (
+                        {usuario.nome?.length > 0 && usuario.nome?.length < 3 && (
                             <span className="text-red-400 text-xs flex items-center p-2 gap-2">
                                 <FaExclamationTriangle size={16} />
                                 O nome deve ter no mínimo 3 caracteres
@@ -195,7 +195,7 @@ console.log("TOKEN:", usuario.token);
                         <input
                             type="text"
                             name="usuario"
-                            value={user.usuario}
+                            value={usuario.usuario}
                             disabled
                             className="w-full p-3 rounded-xl bg-[#0f0f1a] border border-gray-800 text-white
             focus:border-purple-500 focus:ring-2 focus:ring-purple-500/30 transition"
@@ -209,7 +209,7 @@ console.log("TOKEN:", usuario.token);
                         <input
                             type="password"
                             name="senha"
-                            value={user.senha}
+                            value={user.senha || ""}
                             onChange={atualizarEstado}
                             className="w-full p-3 rounded-xl bg-[#0f0f1a] border border-gray-800 text-white
             focus:border-purple-500 focus:ring-2 focus:ring-purple-500/30 transition"
@@ -254,7 +254,7 @@ console.log("TOKEN:", usuario.token);
                         )}
                     </div>
 
-                    <div className="flex justify-between items-center mt-6">
+                    <div className="flex justify-between items-center m-6 gap-4">
 
                         <motion.button
                             type="button"

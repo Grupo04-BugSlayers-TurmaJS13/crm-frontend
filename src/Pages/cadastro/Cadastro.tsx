@@ -16,13 +16,14 @@ import { MdOutlineAppRegistration, MdOutlineSecurity } from "react-icons/md";
 import { TbClick } from "react-icons/tb";
 import { InstagramLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import { FacebookLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Cadastro() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    const [confirmarSenha, setConfirmarSenha] = useState<string>("");
+    const [confirmarSenha, setConfirmarSenha] = useState<string>("")
 
     const [usuario, setUsuario] = useState<Usuario>({
         id: 0,
@@ -53,14 +54,14 @@ function Cadastro() {
 
         if (confirmarSenha === usuario.senha && usuario.senha.length >= 8) {
             try {
-                await cadastrarUsuario("/usuarios", usuario, setUsuario);
+                await cadastrarUsuario("/usuarios", usuario, setUsuario)
 
-                alert("Usuário cadastrado com sucesso!");
+                ToastAlerta("Usuário cadastrado com sucesso!", "sucesso")
             } catch (error) {
-                alert("Erro ao cadastrar usuário!");
+                ToastAlerta("Erro ao cadastrar usuário!", "erro")
             }
         } else {
-            alert("Dados inválidos!");
+            ToastAlerta("Dados inválidos!", "info")
             setUsuario({
                 ...usuario,
                 senha: ""
