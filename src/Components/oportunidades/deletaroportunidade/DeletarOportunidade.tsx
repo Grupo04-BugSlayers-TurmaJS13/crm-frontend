@@ -4,7 +4,8 @@ import { AuthContext } from "../../../contexts/AuthContext"
 import type Oportunidade from "../../../models/Oportunidade"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
 import { ClipLoader } from "react-spinners"
-import { buscar, deletar } from "../../../services/service"
+import { buscar, deletar } from "../../../services/Service"
+
 
 
 function DeletarOportunidade() {

@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
-import CardOportunidade from "../cardoportunidade/CardOportunidade";
+
 import { useContext, useEffect, useState } from "react";
 import type Oportunidade from "../../../models/Oportunidade";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import { buscar } from "../../../services/Service";
-import FormOportunidade from "../formoportunidade/FormOportunidade";
+
 import { SyncLoader } from "react-spinners";
+import CardOportunidade from "../cardoportunidade/CardOportunidade";
+import FormOportunidade from "../formoportunidade/FormOportunidade";
 
 function ListarOportunidade() {
   const navigate = useNavigate();

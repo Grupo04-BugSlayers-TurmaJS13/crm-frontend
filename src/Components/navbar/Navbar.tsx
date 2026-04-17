@@ -13,7 +13,7 @@ function Navbar() {
 
                     <div className="container flex justify-between mx-6">
 
-                        <Link to="/" >
+                        <Link to="/home" >
                             <img 
                             src={imgLogoLine}
                             alt="Logo Conecta CRM" 
@@ -22,14 +22,16 @@ function Navbar() {
                         </Link>
 
                         <div className='flex gap-4 text-sm font-light items-center'>
-                            <Link to='/clientes' className=' hover:text-(--color-blue-light) '>CLIENTES</Link>
-                            <Link to='/oportunidades' className='hover:text-(--color-blue-light)'>OPORTUNIDADES</Link>
+                            <Link to='/listarclientes' className=' hover:text-(--color-blue-light) '>CLIENTES</Link>
+                            <Link to='/listaroportunidades' className='hover:text-(--color-blue-light)'>OPORTUNIDADES</Link>
+                            <Link to="/perfil">
                             <button
                                 aria-label="Perfil do usuário"
                                 className="text-white hover:text-(--color-blue-light) transition-colors ml-2"
                             >
                                 <UserIcon size={26} />
                             </button>
+                            </Link>
 
                         </div>
                     </div>

@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo-crm.webp'
-import Navbar from '../../Components/navbar/Navbar'
+
 
 function Home() {
   return (
     <>
         
         <section className='bg-primary-dark min-h-screen flex flex-col items-center justify-center text-center gap-2'>
-            <Navbar />
+            
             
            
                 <img src={logo} alt="logo-crm" className='w-[350px] transition-transform duration-500 hover:rotate-0 hover:scale-110'/>
