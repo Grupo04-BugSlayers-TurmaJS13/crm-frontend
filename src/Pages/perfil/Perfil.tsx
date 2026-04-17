@@ -1,9 +1,12 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
 import { buscar } from "../../services/Service"
 import profileimg from "../../assets/profileimg.jpg"
 import { FaPencil } from "react-icons/fa6"
+import type Oportunidade from "../../models/Oportunidade"
+import { ToastAlerta } from "../../utils/ToastAlerta"
+import CardOportunidade from "../../components/oportunidades/cardoportunidade/CardOportunidade"
 
 function Perfil() {
 
@@ -13,32 +16,32 @@ function Perfil() {
 
     const token = usuario.token;
 
-    // const [clientes, setCLientes] = useState<Clientes[]>([]);
+    const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
 
-    // const meusClientes= clientes.filter(
-    //     (post) => post.usuario?.id === usuario.id
-    // )
+    const minhasOportunidades= oportunidades.filter(
+        (post) => post.usuario?.id === usuario.id
+    )
 
-    // async function buscarCliente() {
-    //     try {
-    //         await buscar("/clientes", setClientes, {
-    //             headers: {
-    //                 Authorization: token,
-    //             },
-    //         });
-    //     } catch (error) {
-    //         alert("Erro ao buscar postagens", "erro");
-    //     }
-    // }
+    async function buscarOportunidades() {
+        try {
+            await buscar("/oportunidades", setOportunidades, {
+                headers: {
+                    Authorization: token,
+                },
+            });
+        } catch (error) {
+            ToastAlerta("Erro ao buscar postagens", "erro");
+        }
+    }
 
-    // useEffect(() => {
-    //     if (token === "") {
-    //         alert("Você precisa estar logado!", "erro");
-    //         navigate("/");
-    //     } else {
-    //         buscarCliente();
-    //     }
-    // }, [token]);
+    useEffect(() => {
+        if (token === "") {
+            ToastAlerta("Você precisa estar logado!", "erro");
+            navigate("/");
+        } else {
+            buscarOportunidades();
+        }
+    }, [token]);
 
     return (
         <>
@@ -92,7 +95,26 @@ function Perfil() {
                             <Link to="/atualizarusuario"className="mt-3 text-sm text-purple-400 hover:underline">
                                 Alterar senha
                             </Link>
+                        <div className="flex flex-col justify-between mt-10">
+
+                    <h3 className="text-2xl font-bold text-purple-400 mb-6 text-center">
+                        Minhas Oportunidades
+                    </h3>
+
+                    {minhasOportunidades.length === 0 ? (
+                        <p className="text-center text-gray-400">
+                            Você ainda não fez nenhuma postagem 😢
+                        </p>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 ">
+                            {minhasOportunidades.map((oportunidade) => (
+                                <CardOportunidade key={oportunidade.id} oportunidade={oportunidade} />
+                            ))}
                         </div>
+                    )}
+                </div>
+                </div>
+
                     </div>
                 </div>
             </section>
