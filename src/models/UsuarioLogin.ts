@@ -1,8 +1,8 @@
-export default interface Usuario {
+export default interface UsuarioLogin {
     id: number
     nome: string
     usuario: string
     senha: string
     foto: string
-    // oportunidades?: Oportunidades[] | null
+    token: string
 }
