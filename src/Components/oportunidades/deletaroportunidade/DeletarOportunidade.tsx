@@ -1,11 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom"
-
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../../contexts/AuthContext"
 import type Oportunidade from "../../../models/Oportunidade"
-import { buscar, deletar } from "../../../services/Service"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
 import { ClipLoader } from "react-spinners"
+import { buscar, deletar } from "../../../services/service"
 
 
 function DeletarOportunidade() {
