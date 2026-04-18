@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate, useParams } from "react-router-dom"
 
 import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "../../../contexts/AuthContext"
 import type Cliente from "../../../models/Cliente"
 import { buscar, deletar } from "../../../services/service"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
 import { ClipLoader } from "react-spinners"
-
+import { AuthContext } from "../../../contexts/AuthContext"
+import { MdOutlineMail, MdPhone } from "react-icons/md"
 
 function DeletarCliente() {
     const navigate = useNavigate()
@@ -61,7 +62,7 @@ function DeletarCliente() {
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
-            }else {
+            } else {
                 ToastAlerta('Erro ao deletar a cliente.', "erro")
             }
         }
@@ -73,53 +74,66 @@ function DeletarCliente() {
     function retornar() {
         navigate("/listarclientes")
     }
-  return (
-    <>
-    <section className=" bg-primary-dark min-h-screen min-w-screen">
-       <div className='container w-1/3 mx-auto'>
-            <h1 className='text-4xl text-center py-4 my-4 text-blue-light'>Deletar Cliente</h1>
+    return (
+        <>
+            <section className="bg-[var(--color-primary-dark)] min-h-screen flex items-center justify-center p-4">
 
-            <p className='text-center font-semibold mb-4 text-blue-light'>
-                Você tem certeza de que deseja apagar a cliente a seguir?
-            </p>
+                <div className="w-full max-w-md">
 
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header 
-                    className='py-2 px-6 bg-purple text-white font-bold text-2xl'>
-                    Cliente
-                </header>
-                <div className="p-4 bg-background">
-                    <p className='text-xl h-full'>{cliente.nome}</p>
-                    
+                    <h1 className="text-3xl text-center text-[var(--color-blue-light)] font-heading p-4">
+                        Deletar Cliente
+                    </h1>
+
+                    <p className="text-center text-[var(--color-blue-light)] font-medium mb-10 ">
+                        Você tem certeza de que deseja apagar este cliente?
+                    </p>
+
+                    <div className="flex flex-col rounded-2xl overflow-hidden
+                    bg-purple/18 backdrop-blur-md
+                    border border-purple/30 p-6 gap-4">
+
+                        <h2 className="text-xl text-center text-[var(--color-blue-light)] font-semibold">
+                            Cliente
+                        </h2>
+
+                        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent my-2" />
+
+                        <div className="text-gray-400 space-y-1">
+                            <p className="text-lg font-semibold text-gray-300 gap-4"> {cliente.nome}</p>
+                            <p className="text-sm flex text-center gap-2 items-center"> <MdOutlineMail size={20} /> {cliente.email}</p>
+                            <p className="text-sm flex text-center gap-2 items-center"> <MdPhone size={20} /> {cliente.telefone}</p>
+
+                            <div className="flex gap-3 mt-4">
+
+                                <button
+                                    onClick={retornar}
+                                    className="w-full py-2 rounded-lg 
+                                    bg-purple-400 hover:bg-purple flex items-center 
+                                    justify-center text-[var(--color-text)] transition"
+                                >
+                                    Não
+                                </button>
+
+                                <button
+                                    onClick={deletarCliente}
+                                    className="w-full py-2 rounded-lg
+                                bg-gray-700 transition text-white font-medium
+                                flex items-center justify-center hover:bg-red-700"
+                                >
+                                    {isLoading ? (
+                                        <ClipLoader color="#ffffff" size={20} />
+                                    ) : (
+                                        "Deletar"
+                                    )}
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div className="flex ">
-                    <button 
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2 '
-                        onClick={retornar}
-                        >
-                        Não
-                    </button>
-                    <button 
-                        className='w-full text-slate-100 bg-blue-400 
-                        hover:bg-blue-600 flex items-center justify-center'
-                        onClick={deletarCliente}
-                        >
-                          
-                        { isLoading ? 
-                            <ClipLoader 
-                                color="#ffffff" 
-                                size={24}
-                            /> : 
-                            <span>Sim</span>
-                        }
-                        
-                    </button>
-                </div>
-            </div>
-        </div>
-        </section>
-    </>
-  )
+            </section>
+        </>
+    )
 }
 
 export default DeletarCliente

@@ -1,13 +1,8 @@
 import { motion } from "framer-motion";
 import { Blocks, FileText, ShieldCheck } from "lucide-react";
 import { GithubLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
-import {
-  BrandLogo,
-  PageShell,
-  SectionBadge,
-  fadeUp,
-  staggerContainer,
-} from "../Components/about/AboutShared";
+import { BrandLogo, fadeUp, PageShell, SectionBadge, staggerContainer } from "../components/about/AboutShared";
+
 
 const developers = [
   {

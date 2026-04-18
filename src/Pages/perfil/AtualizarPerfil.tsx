@@ -2,15 +2,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState, type ChangeEvent, type SyntheticEvent } from "react"
 import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../../context/AuthContext"
 import type Usuario from "../../models/Usuario"
-import { atualizar, buscar } from "../../services/Service"
 import { ToastAlerta } from "../../utils/ToastAlerta"
 import profileimg from "../../assets/profileimg.jpg"
 import { FaCheck, FaPencil } from "react-icons/fa6"
 import { FaExclamationTriangle } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { ClipLoader } from "react-spinners"
+import { atualizar, buscar } from "../../services/service"
+import { AuthContext } from "../../contexts/AuthContext"
 
 function AtualizarPerfil() {
 

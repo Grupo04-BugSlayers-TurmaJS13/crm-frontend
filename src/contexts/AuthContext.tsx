@@ -1,24 +1,23 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useState, type ReactNode } from "react";
 
 import { ToastAlerta } from "../utils/ToastAlerta.ts";
 import type UsuarioLogin from "../models/UsuarioLogin.ts";
 import { login } from "../services/service.ts";
 
-
-
-
-interface authContextProps {
-  usuario: UsuarioLogin;
-  handleLogout(): void;
-  handleLogin(usuario: UsuarioLogin): Promise<void>;
-  isLoading: boolean;
+interface AuthContextProps {
+  usuario: UsuarioLogin
+  handleLogout(): void
+  handleLogin(usuario: UsuarioLogin): Promise<void>
+  isLoading: boolean
 }
 
 interface AuthProviderProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
-export const AuthContext = createContext({} as authContextProps);
+export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthProvider({ children }: AuthProviderProps) {
   //Inicializar o estado usuario (armazenar os dados do usuário autenticado)
@@ -32,7 +31,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   });
 
   // Inicialaz o estado isLoading (controlar o loaderr do componente login)
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   //Implementação da função de login
   async function handleLogin(usuarioLogin: UsuarioLogin) {
@@ -56,8 +55,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       usuario: "",
       senha: "",
       foto: "",
-      token: "",
-    });
+      token: ""
+    })
   }
 
   return(

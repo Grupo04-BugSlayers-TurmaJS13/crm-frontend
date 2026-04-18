@@ -1,6 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
 import type { ReactNode } from "react";
-import { motion, type Variants } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
 
 
 export const fadeUp: Variants ={

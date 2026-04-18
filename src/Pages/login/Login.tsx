@@ -9,13 +9,13 @@ import { FaExclamationTriangle } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { ClipLoader } from "react-spinners"
 import { Link, useNavigate } from "react-router-dom"
-import { AuthContext } from "../../context/AuthContext"
-import type UsuarioLogin from "../../models/UsuarioLogin"
 import logo from "../../assets/logo-crm.png"
 import { FcGoogle } from "react-icons/fc"
 import { BsFillPersonFill } from "react-icons/bs"
 import { IoMdTrendingUp } from "react-icons/io"
 import { TbNotes } from "react-icons/tb"
+import { AuthContext } from "../../contexts/AuthContext"
+import type UsuarioLogin from "../../models/UsuarioLogin"
 
 function Login() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function Login() {
 
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
     {} as UsuarioLogin,
-  );
+  )
 
 
   const { usuario, handleLogin, isLoading } = useContext(AuthContext);
@@ -35,7 +35,7 @@ function Login() {
     if (usuario.token !== "") {
       navigate("/home");
     }
-  }, [usuario]);
+  }, [usuario])
 
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
@@ -46,12 +46,12 @@ function Login() {
   }
 
   function login(e: SyntheticEvent<HTMLFormElement>) {
-    e.preventDefault();
-    handleLogin(usuarioLogin);
+    e.preventDefault()
+    handleLogin(usuarioLogin)
   }
 
-  console.log("USUARIO AUTH:", usuario);
-console.log("TOKEN:", usuario.token);
+  console.log("USUARIO AUTH:", usuario)
+console.log("TOKEN:", usuario.token)
 
   return (
     <>

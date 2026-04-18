@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "../../context/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
-import { buscar } from "../../services/Service"
 import profileimg from "../../assets/profileimg.jpg"
 import { FaPencil } from "react-icons/fa6"
 import type Oportunidade from "../../models/Oportunidade"
 import { ToastAlerta } from "../../utils/ToastAlerta"
 import CardOportunidade from "../../components/oportunidades/cardoportunidade/CardOportunidade"
+import { buscar } from "../../services/service"
+import { AuthContext } from "../../contexts/AuthContext"
 
 function Perfil() {
 
@@ -14,7 +15,7 @@ function Perfil() {
 
     const { usuario } = useContext(AuthContext)
 
-    const token = usuario.token;
+    const token = usuario.token
 
     const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
 
