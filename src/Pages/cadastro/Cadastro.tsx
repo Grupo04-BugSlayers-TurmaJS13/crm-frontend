@@ -83,7 +83,7 @@ function Cadastro() {
 
     return (
         <>
-            <section className="min-h-screen min-w-[100vw] flex items-center justify-center bg-gray-light font-sans px-6 py-25 md:px-0">
+            <section className="min-h-screen mt-10 flex items-center justify-center bg-gray-light font-sans px-6 py-25 md:px-0">
                 <article className="w-full max-w-255 rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(121,84,237,0.5)] grid grid-cols-1 md:grid-cols-5">
                     <div className="bg-primary-dark text-white p-6 md:p-10 flex flex-col justify-between md:col-span-2">
                         <div className="flex flex-col">

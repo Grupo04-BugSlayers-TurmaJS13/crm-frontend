@@ -52,7 +52,7 @@ function Login() {
 
   return (
     <>
-      <section className="min-h-screen min-w-[100vw] flex items-center justify-center bg-gray-light font-sans py-25 mt-10 px-6">
+      <section className="min-h-screen flex items-center justify-center bg-gray-light font-sans py-25 mt-10 px-6">
         <article className="max-w-[900px] min-h-[520px] rounded-lg overflow-hidden shadow-[0_0_30px_rgba(121,84,237,0.5)] grid grid-cols-1 md:grid-cols-2">
 
           <div className="bg-primary-dark text-white p-6 md:p-10 flex flex-col justify-between">
