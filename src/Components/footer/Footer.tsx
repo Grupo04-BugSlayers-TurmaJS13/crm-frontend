@@ -6,7 +6,7 @@ import imgLogo from "../../assets/img/logo-crm.png"
 function Footer() {
   return (
     <>
-      <footer className="bg-(--color-primary-dark) border-t border-white">
+      <footer className="bg-(--color-primary-dark) border-t border-white min-w-screen ">
         <div className="w-full px-6 py-10">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
 

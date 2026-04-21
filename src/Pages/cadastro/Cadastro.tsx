@@ -83,9 +83,9 @@ function Cadastro() {
 
     return (
         <>
-            <section className="min-h-screen flex items-center justify-center bg-[var(--color-gray-light)] font-sans px-4 py-10 md:px-0">
+            <section className="min-h-screen min-w-[100vw] flex items-center justify-center bg-gray-light font-sans px-6 py-25 md:px-0">
                 <article className="w-full max-w-255 rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(121,84,237,0.5)] grid grid-cols-1 md:grid-cols-5">
-                    <div className="bg-[var(--color-primary-dark)] text-white p-6 md:p-10 flex flex-col justify-between md:col-span-2">
+                    <div className="bg-primary-dark text-white p-6 md:p-10 flex flex-col justify-between md:col-span-2">
                         <div className="flex flex-col">
                             <img
                                 src={logo}
@@ -133,12 +133,12 @@ function Cadastro() {
                                 <LinkedinLogoIcon size={40} className="text-[var(--color-purple)] border border-[var(--color-purple)] rounded-md p-2 bg-[rgba(121,84,237,0.1)] backdrop-blur-sm hover:shadow-sm shadow-purple-400" />
                                 {/* LinkedIn */}
                             </Link>
-                            
+
                         </div>
                     </div>
 
                     <div className="bg-white p-6 md:p-10 flex flex-col justify-center md:col-span-3">
-                        <h2 className="text-2xl font-heading font-semibold text-[var(--color-text)]">
+                        <h2 className="text-2xl font-heading font-semibold text-text">
                             Criar conta
                         </h2>
 
@@ -275,28 +275,30 @@ function Cadastro() {
                                 </div>
                             )}
 
-                            <motion.button
-                                type="button"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={retornar}
-                                className="w-full py-3 rounded-lg bg-red-400 text-white font-semibold hover:bg-red-600 transition"
-                            >
-                                Cancelar
-                            </motion.button>
+                            <div className="flex gap-4 justify-center items-center m-auto">
+                                <motion.button
+                                    type="submit"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="w-full py-3 rounded-lg bg-[var(--color-purple)] text-white font-semibold hover:bg-[var(--color-purple-hover)] transition"
+                                >
+                                    {isLoading ? (
+                                        <ClipLoader color="#fff" size={20} />
+                                    ) : (
+                                        "Cadastrar"
+                                    )}
+                                </motion.button>
 
-                            <motion.button
-                                type="submit"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="w-full py-3 rounded-lg bg-[var(--color-purple)] text-white font-semibold hover:bg-[var(--color-purple-hover)] transition"
-                            >
-                                {isLoading ? (
-                                    <ClipLoader color="#fff" size={20} />
-                                ) : (
-                                    "Cadastrar"
-                                )}
-                            </motion.button>
+                                <motion.button
+                                    type="button"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={retornar}
+                                    className="w-full py-3 rounded-lg bg-gray-700 hover:bg-red-500 transition text-white font-semibold"
+                                >
+                                    Cancelar
+                                </motion.button>
+                            </div>
 
                             <p className="text-xs text-center text-gray-500 mt-4">
                                 Já tem uma conta?{" "}

@@ -33,7 +33,7 @@ const featureHighlights = [
         icon: Workflow,
     },
     {
-        title: 'Evoluição contínua',
+        title: 'Evolução contínua',
         description: 'A base do projeto permite crescer com novos módulos, relatórios e regras de negócio.',
         icon: Sparkles,
     },
@@ -79,7 +79,7 @@ export default function AboutProject() {
                                         <h1 className='text-4xl font-semibold leading-tight text-white-soft sm:text-5xl lg:text-6xl'>
                                             Um CRM criado para conectar oportunidade, produtividade e estratégia de negócios.</h1>
                                         <p className='mt-6 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg'>
-                                            O Conecta CRM foi pensado pela nossa equipe para oferecer uma experiênci mais fluida no acompanhamento de métricas de negócio, clientes, processos e decisões, unindo interface moderna, estrutura escalável e gestão orientada a resultados.
+                                            O Conecta CRM foi pensado pela nossa equipe para oferecer uma experiência mais fluida no acompanhamento de métricas de negócio, clientes, processos e decisões, unindo interface moderna, estrutura escalável e gestão orientada a resultados.
                                         </p>
                                     </div>
                                     <div className='flex flex-col justify-end gap-4'>

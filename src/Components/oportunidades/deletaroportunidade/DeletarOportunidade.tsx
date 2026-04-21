@@ -6,6 +6,7 @@ import type Oportunidade from "../../../models/Oportunidade"
 import { buscar, deletar } from "../../../services/service"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
 import { ClipLoader } from "react-spinners"
+import { PageShell } from "../../about/AboutShared"
 
 
 
@@ -62,7 +63,7 @@ function DeletarOportunidade() {
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
-            }else {
+            } else {
                 ToastAlerta('Erro ao deletar a oportunidade.', "erro")
             }
         }
@@ -74,50 +75,62 @@ function DeletarOportunidade() {
     function retornar() {
         navigate("/listaroportunidades")
     }
-  return (
-    <>
-       <div className='container w-1/3 mx-auto '>
-            <h1 className='text-4xl text-center my-4'>Deletar Oportunidade</h1>
+    return (
+        <>
+            <PageShell>
+                <section className='min-h-screen flex items-center justify-center p-4'>
+                    <div className='w-full max-w-md'>
 
-            <p className='text-center font-semibold mb-4'>
-                Você tem certeza de que deseja apagar a oportunidade a seguir?
-            </p>
+                        <h1 className='text-3xl text-center text-blue-light font-heading p-4'>Deletar Oportunidade</h1>
 
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header 
-                    className='py-2 px-6 bg-purple text-white font-bold text-2xl'>
-                    Oportunidade
-                </header>
-                <div className="p-4">
-                    <p className='text-xl h-full'>{oportunidade.servico}</p>
-                    
-                </div>
-                <div className="flex">
-                    <button 
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'
-                        >
-                        Não
-                    </button>
-                    <button 
-                        className='w-full text-slate-100 bg-blue-400 
-                        hover:bg-blue-600 flex items-center justify-center'
-                        onClick={deletarOportunidade}
-                        >
-                          Sim
-                        { isLoading ? 
-                            <ClipLoader 
-                                color="#ffffff" 
-                                size={24}
-                            /> : 
-                            <span>Sim</span>
-                        }
-                        
-                    </button>
-                </div>
-            </div>
-        </div>
-    </>
-  )
+                        <p className='text-center text-blue-light font-medium mb-10'>
+                            Você tem certeza de que deseja apagar a oportunidade a seguir?
+                        </p>
+
+                        <div className='flex flex-col rounded-2xl overflow-hidden
+                    bg-purple/18 backdrop-blur-md
+                    border border-purple/30 p-6 gap-4'>
+                            <h2 className='text-xl text-center text-blue-light font-semibold'>
+                                Oportunidade
+                            </h2>
+
+                            <div className="h-0.5 bg-gradient-to-r from-transparent via-blue/20 to-transparent my-2" />
+
+                            <div className="text-gray-400 space-y-1">
+                                <p className='text-lg font-semibold gap-4 text-gray-300'>{oportunidade.servico}</p>
+                                <p className='text-sm flex text-center gap-2 items-center'>R$ {oportunidade.preco?.toFixed(2)}</p>
+
+                            </div>
+                            <div className="flex gap-3 mt-4">
+                                <button
+                                    onClick={retornar}
+                                    className="w-full py-2 rounded-lg 
+                                    bg-purple-400 hover:bg-purple flex items-center 
+                                    justify-center text-text transition"
+                                >
+                                    Não
+                                </button>
+                                <button
+                                    className='w-full py-2 rounded-lg
+                                bg-gray-700 transition text-white font-medium
+                                flex items-center justify-center hover:bg-red-700'
+                                    onClick={deletarOportunidade}
+                                >
+                                    {isLoading ?
+                                        <ClipLoader
+                                            color="#ffffff"
+                                            size={24}
+                                        /> :
+                                        "Sim"
+                                    }
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </PageShell>
+        </>
+    )
 }
 
 export default DeletarOportunidade

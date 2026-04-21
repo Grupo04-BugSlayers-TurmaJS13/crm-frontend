@@ -12,8 +12,9 @@ interface cardClienteProps {
 function CardCliente({ cliente }: cardClienteProps) {
   return (
     <div key={cliente.id} className=" bg-purple/18 backdrop-blur-md
-            border border-purple/30 rounded-2xl p-6
-            shadow-lgp-6 shadow-sm hover:shadow-md transition-shadow mt-8">
+            border border-purple/30 rounded-2xl p-4
+                    shadow-lg hover:shadow-purple-500/20 
+                    transition-all duration-300 hover:scale-[1.02] mt-8">
       <div className="flex items-center gap-4 mb-4">
         <div className="bg-blue-light/20 p-3 rounded-full text-blue">
           <Buildings size={32} />

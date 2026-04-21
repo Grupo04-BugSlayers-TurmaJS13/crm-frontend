@@ -16,6 +16,7 @@ import type Oportunidade from "../../../models/Oportunidade";
 import { StatusControle } from "../../../utils/StatusControle";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import { buscar, atualizar, cadastrar } from "../../../services/service";
+import { PageShell } from "../../about/AboutShared";
 
 function FormOportunidade() {
 	const navigate = useNavigate();
@@ -126,10 +127,22 @@ function FormOportunidade() {
 			return;
 		}
 
+		// if (name === "preco") {
+		// 	setOportunidade((estadoAnterior) => ({
+		// 		...estadoAnterior,
+		// 		preco: value === "" ? 0 : Number(value),
+		// 	}));
+		// 	return;
+		// }
+
+
 		if (name === "preco") {
+			const apenasNumeros = value.replace(/\D/g, "");
+			const numero = Number(apenasNumeros) / 100;
+
 			setOportunidade((estadoAnterior) => ({
 				...estadoAnterior,
-				preco: value === "" ? 0 : Number(value),
+				preco: numero,
 			}));
 			return;
 		}
@@ -204,96 +217,122 @@ function FormOportunidade() {
 		setIsLoading(false);
 	}
 
+	function formatarMoeda(valor: number) {
+		return valor.toLocaleString("pt-BR", {
+			style: "currency",
+			currency: "BRL",
+		});
+	}
+
 	return (
-		<div className="container mx-auto flex flex-col items-center px-4">
-			<h1 className="my-8 text-center text-4xl">
-				{id !== undefined ? "Editar Oportunidade" : "Cadastrar Oportunidade"}
-			</h1>
-
-			<form
-				className="flex w-full max-w-2xl flex-col gap-4 md:w-1/2"
-				onSubmit={gerarNovaOportunidade}
-			>
-				<div className="flex flex-col gap-2">
-					<label htmlFor="servico">Título da Oportunidade</label>
-					<input
-						type="text"
-						placeholder="Serviço"
-						name="servico"
-						id="servico"
-						required
-						className="rounded border-2 border-slate-700 p-2"
-						value={oportunidade.servico}
-						onChange={atualizarEstado}
-					/>
-				</div>
-
-				<div className="flex flex-col gap-2">
-					<label htmlFor="preco">Preço da Oportunidade</label>
-					<input
-						type="number"
-						step="0.01"
-						min="0"
-						placeholder="Preço"
-						name="preco"
-						id="preco"
-						required
-						className="rounded border-2 border-slate-700 p-2"
-						value={oportunidade.preco === 0 ? "" : oportunidade.preco}
-						onChange={atualizarEstado}
-					/>
-				</div>
-
-				<div className="flex flex-col gap-2">
-					<label htmlFor="status">Status da Oportunidade</label>
-					<select
-						name="status"
-						id="status"
-						className="rounded border border-slate-800 p-2"
-						value={oportunidade.status}
-						onChange={atualizarEstado}
-					>
-						<option value={StatusControle.ABERTO}>Aberto</option>
-						<option value={StatusControle.FECHADO}>Fechado</option>
-						<option value={StatusControle.PERDIDO}>Perdido</option>
-					</select>
-				</div>
-
-				<div className="flex flex-col gap-2">
-					<label htmlFor="cliente">Cliente da Oportunidade</label>
-					<select
-						name="cliente"
-						id="cliente"
-						className="rounded border border-slate-800 p-2"
-						value={oportunidade.cliente?.id ? String(oportunidade.cliente.id) : ""}
-						onChange={atualizarEstado}
-						required
-					>
-						<option value="" disabled>
-							Selecione um cliente
-						</option>
-
-						{clientes.map((cliente) => (
-							<option key={cliente.id} value={cliente.id}>
-								{cliente.nome}
-							</option>
-						))}
-					</select>
-				</div>
-
-				<button
-					type="submit"
-					disabled={isLoading}
-					className="mx-auto flex w-1/2 justify-center rounded bg-indigo-400 py-2 font-bold text-white hover:bg-indigo-800 disabled:bg-slate-300"
+		<PageShell>
+			<div className="container flex flex-col items-center py-20 min-h-screen min-w-screen p-10">
+				<h1 className="py-6 text-center text-4xl text-blue-light">
+					{id !== undefined ? "Editar Oportunidade" : "Cadastrar Oportunidade"}
+				</h1>
+				<form
+					className="flex w-full max-w-2xl flex-col gap-4 md:w-1/2 bg-purple/18 backdrop-blur-md
+            		border border-purple/30 rounded-2xl p-6
+            		shadow-lgp-6 shadow-sm hover:shadow-md transition-shadow mt-8"
+					onSubmit={gerarNovaOportunidade}
 				>
-					{isLoading ? (
-						<ClipLoader color="#ffffff" size={24} />
-					) : (
-						<span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
-					)}
-				</button>
-			</form>
-		</div>
+					<div className="flex flex-col gap-2">
+						<label htmlFor="servico" className="text-blue-light px-2">Título da Oportunidade</label>
+						<input
+							type="text"
+							placeholder="Serviço"
+							name="servico"
+							id="servico"
+							required
+							className="w-full p-3 rounded-lg bg-[#0f0f1a] border border-gray-800 text-white
+            				focus:border-blue-300 focus:ring-2 focus:ring-blue-300/30 transition"
+							value={oportunidade.servico}
+							onChange={atualizarEstado}
+						/>
+					</div>
+
+					<div className="flex flex-col gap-2">
+						<label htmlFor="preco" className="text-blue-light px-2">Preço da Oportunidade</label>
+						<input
+							type="text"
+							step="0.01"
+							min="0"
+							placeholder="Preço"
+							name="preco"
+							id="preco"
+							required
+							inputMode="numeric"
+							className="w-full p-3 rounded-lg bg-[#0f0f1a] border border-gray-800 text-white
+            				focus:border-blue-300 focus:ring-2 focus:ring-blue-300/30 transition"
+							value={
+								oportunidade.preco === 0
+									? ""
+									: formatarMoeda(oportunidade.preco)
+							}
+							onChange={atualizarEstado}
+						/>
+					</div>
+
+					<div className="flex flex-col gap-2">
+						<label htmlFor="status" className="text-blue-light px-2">Status da Oportunidade</label>
+						<select
+							name="status"
+							id="status"
+							className="w-full p-3 rounded-lg bg-[#0f0f1a] border border-gray-800 text-white
+            				focus:border-blue-300 focus:ring-2 focus:ring-blue-300/30 transition"
+							value={oportunidade.status}
+							onChange={atualizarEstado}
+						>
+							<option value={StatusControle.ABERTO} className="text-blue-light px-2">Aberto</option>
+							<option value={StatusControle.FECHADO} className="text-blue-light px-2">Fechado</option>
+							<option value={StatusControle.PERDIDO} className="text-blue-light px-2">Perdido</option>
+						</select>
+					</div>
+
+					<div className="flex flex-col gap-2">
+						<label htmlFor="cliente" className="text-blue-light px-2">Cliente da Oportunidade</label>
+						<select
+							name="cliente"
+							id="cliente"
+							className="w-full p-3 rounded-lg bg-[#0f0f1a] border border-gray-800 text-white
+            				focus:border-blue-300 focus:ring-2 focus:ring-blue-300/30 transition"
+							value={oportunidade.cliente?.id ? String(oportunidade.cliente.id) : ""}
+							onChange={atualizarEstado}
+							required
+						>
+							<option value="" disabled className="text-blue-light px-2">
+								Selecione um cliente
+							</option>
+
+							{clientes.map((cliente) => (
+								<option key={cliente.id} value={cliente.id}>
+									{cliente.nome}
+								</option>
+							))}
+						</select>
+					</div>
+					<div className="flex justify-center m-auto gap-6" >
+						<button
+							type="submit"
+							disabled={isLoading}
+							className="mx-auto flex w-50 justify-center rounded-lg bg-blue-800 py-3 my-4 font-bold text-white hover:bg-indigo-800 disabled:bg-slate-300 mb-4"
+						>
+							{isLoading ? (
+								<ClipLoader color="#ffffff" size={24} />
+							) : (
+								<span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
+							)}
+						</button>
+						<button
+							onClick={retornar}
+							className="w-50 rounded-lg py-3 my-4 m-auto
+	                    bg-gray-700 transition text-white font-bold flex items-center justify-center hover:bg-red-700">
+							Cancelar
+						</button>
+					</div>
+				</form>
+			</div>
+		</PageShell>
 	);
 }
 

@@ -50,15 +50,12 @@ function Login() {
     handleLogin(usuarioLogin)
   }
 
-  console.log("USUARIO AUTH:", usuario)
-console.log("TOKEN:", usuario.token)
-
   return (
     <>
-      <section className="min-h-screen flex items-center justify-center bg-[var(--color-gray-light)] font-sans py-10 px-4 md:px-0">
-        <article className="w-full max-w-[900px] min-h-[520px] rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(121,84,237,0.5)] grid grid-cols-1 md:grid-cols-2">
+      <section className="min-h-screen min-w-[100vw] flex items-center justify-center bg-gray-light font-sans py-25 mt-10 px-6">
+        <article className="max-w-[900px] min-h-[520px] rounded-lg overflow-hidden shadow-[0_0_30px_rgba(121,84,237,0.5)] grid grid-cols-1 md:grid-cols-2">
 
-          <div className="bg-[var(--color-primary-dark)] text-white p-6 md:p-10 flex flex-col justify-between">
+          <div className="bg-primary-dark text-white p-6 md:p-10 flex flex-col justify-between">
             <div className="flex flex-col">
               <img
                 src={logo}
@@ -68,7 +65,7 @@ console.log("TOKEN:", usuario.token)
 
               <h1 className="text-2xl md:text-3xl font-heading font-semibold leading-snug">
                 Gerencie seus clientes com{" "}
-                <span className="text-[var(--color-purple)]">precisão</span>
+                <span className="text-purple">precisão</span>
               </h1>
 
               <p className="mt-4 text-sm text-gray-300">
@@ -116,7 +113,7 @@ console.log("TOKEN:", usuario.token)
                   value={usuarioLogin.usuario}
                   onChange={atualizarEstado}
                   placeholder="seu@email.com"
-                  className="w-full mt-1 p-3 rounded-lg bg-[var(--color-gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--color-purple)]"
+                  className="w-full mt-1 p-3 rounded-lg bg-gray-light focus:outline-none focus:ring-2 focus:ring-[var(--color-purple)]"
                 />
                 {usuarioLogin.usuario?.length > 0 && !emailValido && (
                   <span className="text-red-400 text-xs flex items-center p-2 gap-2">
@@ -134,11 +131,11 @@ console.log("TOKEN:", usuario.token)
                   value={usuarioLogin.senha}
                   onChange={atualizarEstado}
                   placeholder="••••••"
-                  className="w-full mt-1 p-3 rounded-lg bg-[var(--color-gray-light)] focus:outline-none focus:ring-2 focus:ring-[var(--color-purple)]"
+                  className="w-full mt-1 p-3 rounded-lg bg-gray-light focus:outline-none focus:ring-2 focus:ring-[var(--color-purple)]"
                 />
               </div>
 
-              <div className="text-right text-xs text-[var(--color-purple)] cursor-pointer">
+              <div className="text-right text-xs text-purple cursor-pointer">
                 Esqueceu a senha?
               </div>
 
@@ -180,7 +177,6 @@ console.log("TOKEN:", usuario.token)
           </div>
         </article>
       </section>
-
     </>
   );
 }

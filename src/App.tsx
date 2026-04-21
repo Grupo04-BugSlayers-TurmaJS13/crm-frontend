@@ -29,6 +29,7 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/perfil" element={<Perfil />} />
+            <Route path="/perfil/:id" element={<Perfil />} />
             <Route path="/cadastrar" element={<Cadastro />} />
             <Route path="/atualizarusuario" element={<AtualizarPerfil />} />
             <Route path="/home" element={<Home />} />
