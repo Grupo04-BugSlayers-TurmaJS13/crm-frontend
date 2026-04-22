@@ -1,22 +1,23 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "./contexts/AuthContext";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/navbar/Navbar";
+import Login from "./pages/login/Login";
+import { Home } from "lucide-react";
 import DeletarCliente from "./components/clientes/deletarclientes/DeletarCliente";
 import FormCliente from "./components/clientes/formclientes/FormClientes";
 import ListarClientes from "./components/clientes/listarclientes/ListarClientes";
+import Footer from "./components/footer/Footer";
 import DeletarOportunidade from "./components/oportunidades/deletaroportunidade/DeletarOportunidade";
 import FormOportunidade from "./components/oportunidades/formoportunidade/FormOportunidade";
 import ListarOportunidade from "./components/oportunidades/listaroportunidades/ListarOportunidade";
-import { AuthProvider } from "./contexts/AuthContext";
+import ListarUsuarios from "./components/usuarios/listausuario/ListarUsuarios";
+import AboutUs from "./pages/about/AboutUs";
 import Cadastro from "./pages/cadastro/Cadastro";
-import Login from "./pages/login/Login";
 import AtualizarPerfil from "./pages/perfil/AtualizarPerfil";
 import Perfil from "./pages/perfil/Perfil";
-import Home from "./pages/home/Home";
-import AboutProject from "./pages/AboutProject";
-import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/Footer";
-import AboutUs from "./pages/AboutUs";
-import ListarUsuarios from "./components/usuarios/listausuario/ListarUsuarios";
+import AboutProject from "./pages/about/AboutProject";
+
 
 function App() {
   return (
