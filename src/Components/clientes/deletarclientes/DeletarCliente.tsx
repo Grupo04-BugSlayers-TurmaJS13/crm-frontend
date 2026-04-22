@@ -4,11 +4,11 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import type Cliente from "../../../models/Cliente"
 import { buscar, deletar } from "../../../services/service"
-import { ToastAlerta } from "../../../utils/ToastAlerta"
 import { ClipLoader } from "react-spinners"
 import { AuthContext } from "../../../contexts/AuthContext"
 import { MdOutlineMail, MdPhone } from "react-icons/md"
 import { PageShell } from "../../about/AboutShared"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function DeletarCliente() {
     const navigate = useNavigate()
