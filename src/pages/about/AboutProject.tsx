@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, BrainCircuit, Database, FolderGit2, Globe, LayoutDashboard, Link as LinkIcon, MonitorSmartphone, Sparkles, Workflow } from 'lucide-react';
-import { BrandLogo, fadeUp, PageShell, SectionBadge, staggerContainer } from '../components/about/AboutShared';
+import { BrandLogo, fadeUp, PageShell, SectionBadge, staggerContainer } from '../../components/about/AboutShared';
 
 
 const projectMetrics = [
