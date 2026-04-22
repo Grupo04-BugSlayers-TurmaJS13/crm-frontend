@@ -16,10 +16,14 @@
   --color-white-soft: #FCFCFC;
 
   /* VARIACOES */
-    --color-purple-hover: #6845d1;
+  --color-purple-hover: #6845d1;
   --color-purple-muted: #a99cf5;
 
   --color-background: #FCFCFC;
   --color-card: #F3F3F3;
   --color-text: #050F17;
+}
+
+html {
+    scrollbar-gutter: stable;
 }
